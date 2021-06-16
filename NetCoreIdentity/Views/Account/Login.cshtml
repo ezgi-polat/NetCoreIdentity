@@ -1,0 +1,74 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" class="was-validated" novalidate>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">First name</label>
+                <input  asp-for="Email" class="form-control" id="email" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input id="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input asp-for="RememberMe" type="checkbox" class="custom-control-input">
+                    <label class="custom-control-label" asp-for="RememberMe">@Html.DisplayNameFor(m => m.RememberMe)</label>
+                </div>
+
+            </div>
+            <button type="submit" id="birKullaniciGirisi" class="btn-primary">Login</button>
+        </form>
+        <br />
+        <div class="form-group">
+            @*<p>
+                <a id="forgot-password" asp-page="./ForgotPassword">Şifreni mi unuttun?</a>
+            </p>*@
+            <p>
+                <a asp-action="Register" asp-controller="Account">Create a new user!</a>
+            </p>
+            @*<p>
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Email doğrulamasını tekrar gönder</a>
+            </p>*@
+        </div>
+
+    </div>
+</div>
+@section JavaScript{
+    <script>
+        $('#birKullaniciGirisi').click(function (e) {
+            e.preventDefault(); //ilk önce bu işlemi yap  post işlemini gerçekleştirmeden önce bunu yap
+            let email = $("#email").val();
+            let password = $("#password").val();
+            console.log(email);
+            console.log(password);
+
+            $.ajax({
+                url: "", success: function (result) {
+                    console.log("successful!!"); //ajax işlemi başarılı ise console yaz
+                }
+            });
+
+        });
+
+       
+        
+
+
+    </script>
+
+
+}
